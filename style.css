@@ -1,0 +1,262 @@
+html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: none;
+    border: none;
+}
+
+#landing-page {
+    font-family: Raleway, sans-serif;
+    border: none;
+    outline: none;
+}
+
+.landing-content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 1000;
+}
+
+#landing-page .subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 1000;
+}
+
+.start-btn {
+    border: none;
+    outline: none;
+    
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    
+    backdrop-filter: blur(15px);
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    font-family: 'Poppins', sans-serif;
+    font-weight: 1000;
+
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.start-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.start-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+.page.active {
+    display: block;
+    position: relative;
+}
+
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.clouds-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.cloud {
+    background-color: #fff;
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0), hsla(0,0%,0%,.1));
+    border-radius: 1em;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,100%,.5);
+    display: inline-block;
+    height: 1em;
+    position: absolute;
+    width: 3em;
+    -webkit-filter: drop-shadow(0 2px 3px hsla(0,0%,0%,.25));
+    animation: float-across 20s infinite linear;
+}
+
+.cloud::before,
+.cloud::after {
+    background-color: #fff;
+    content: '';
+    border-radius: 100%;
+    position: absolute;
+}
+
+.cloud::after {
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0) 50%, hsla(0,0%,0%,.025));
+    height: 1em;
+    right: .4em;
+    top: -.5em;
+    width: 1em;
+}
+
+.cloud::before {
+    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0) 50%, hsla(0,0%,0%,.075));
+    height: 1.6em;
+    left: .4em;
+    top: -.75em;
+    width: 1.6em;
+}
+
+
+.cloud1 {
+    font-size: 60px;
+    top: 20%;
+    left: -180px;
+    animation-duration: 25s;
+    animation-delay: 0s;
+}
+
+
+.cloud2 {
+    font-size: 40px;
+    top: 60%;
+    left: -120px;
+    animation-duration: 30s;
+    animation-delay: 10s;
+}
+
+
+.cloud3 {
+    font-size: 30px;
+    top: 40%;
+    left: -90px;
+    animation-duration: 35s;
+    animation-delay: 20s;
+}
+
+@keyframes float-across {
+    0% { 
+        transform: translateX(0); 
+    }
+    100% { 
+        transform: translateX(calc(100vw + 120px)); 
+    }
+}
+
+
+.landing-content {
+    position: relative;
+    z-index: 10;
+}
+
+
+#landing-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+#landing-page.active {
+    display: flex;
+}
+
+/* Other pages */
+#main-portfolio, #about-page, #education-page, #projects-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: none;
+}
+
+#main-portfolio.active, #about-page.active, #education-page.active, #projects-page.active {
+    display: block; 
+}
+
+/* Navigation */
+nav {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
