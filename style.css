@@ -74,14 +74,17 @@ body {
 
 /* Start Button */
 .start-btn {
+    position: relative;
     border: none;
+    bottom: 100px;
+    right: 150px;
     outline: none;
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 20px 50px;
+    padding: 20px 20px;
     font-size: 1.3rem;
     font-weight: 1000;
-    border-radius: 50px;
+    border-radius: 20px;
     cursor: pointer;
     backdrop-filter: blur(15px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -371,6 +374,8 @@ body {
     top: 0px;
     right: 10%;
     z-index: 5;
+    transform-origin: top center;
+    animation: sway 4s ease-in-out infinite;
 }
 
 .moon-string {
@@ -378,7 +383,6 @@ body {
     height: 150px;
     background: rgba(255, 255, 255, 0.3);
     margin: 0 auto;
-    animation: sway 4s ease-in-out infinite;
 }
 
 .moon {
@@ -389,7 +393,7 @@ body {
     box-shadow: 
         0 0 20px rgba(109, 109, 109, 0.356),
         inset -10px -10px 0 rgba(0, 0, 0, 0.1);
-    animation: sway 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
+    animation: glow 3s ease-in-out infinite alternate;
     margin: 0 auto;
 }
 
@@ -404,13 +408,134 @@ body {
 }
 
 /* ===== OTHER PAGES ===== */
-#main-portfolio, #about-page, #education-page, #projects-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+#main-portfolio, #about-page, #projects-page {
+    background: linear-gradient(180deg,
+        #0f0520 0%,
+        #1e1040 25%,
+        #2d1b69 45%,
+        #4c4b9d 65%,
+        #7c3aed 85%,
+        #a855f7 100%
+    );
     min-height: 100vh;
+    background-attachment: fixed;
+    background-size: 100% 100vh;
     display: none;
+    color: white;
+    font-family: 'Press Start 2P', sans-serif;
+    font-weight: 1000;
 }
 
-#main-portfolio.active, #about-page.active, #education-page.active, #projects-page.active {
+/* ===== ABOUT SECTION ==== */
+
+h2.about {
+    position: absolute;
+    top: 120px;
+    left: 200px;
+}
+
+p.about-hi {
+    position: absolute;
+    top: 170px;
+    left: 200px;
+    width: 30%;
+    line-height: 1.8;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+p.about {
+    position: absolute;
+    top: 210px;
+    left: 200px;
+    width: 30%;
+    line-height: 1.8;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ===== GAMES SECTION ==== */
+
+h2.games {
+    position: absolute;
+    top: 500px;
+    left: 200px;
+}
+
+p.games {
+    position: relative;
+    top: 480px;
+    left: 200px;
+    max-width: 30%;
+    line-height: 1.8;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ===== MUSIC SECTION ==== */
+
+h2.music {
+    position: absolute;
+    top: 800px;
+    left: 200px;
+}
+
+p.music {
+    position: relative;
+    top: 700px;
+    left: 200px;
+    max-width: 30%;
+    line-height: 1.8;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ==== PFP ==== */
+
+img {
+    position: absolute;
+    top: 200px;     /* Top-right corner */
+    right: 100px;
+}
+
+/* ==== CIRCULAR BUTTONS ==== */
+
+.button-container {
+    position: absolute;
+    top: 520px;
+    right: 150px;
+    display: flex;
+    gap: 15px;
+}
+
+.circular-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.circular-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.circular-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+#main-portfolio.active, #about-page.active, #projects-page.active {
     display: block;
 }
 
@@ -437,6 +562,13 @@ nav {
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
 }
 
 nav ul {
@@ -456,4 +588,15 @@ nav a {
 
 nav a:hover {
     background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== CONTENT STYLES ===== */
+/* Profile image */
+img {
+    border-radius: 50%;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
