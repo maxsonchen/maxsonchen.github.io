@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +13,29 @@
     <!-- Landing Page -->
     <div id="landing-page" class="page active">
         <div class="stars-container"></div>
-        <div class="clouds-container">
-            <div class="cloud cloud1"></div>
-            <div class="cloud cloud2"></div>
-            <div class="cloud cloud3"></div>
+        
+        <div class="floating-cloud">
+            <div class="cloud-back"></div>
+            <div class="cloud-layer"></div>
+            <div class="cloud-front"></div>
         </div>
 
         <div class="landing-content">
             <h1>Welcome to Maxson's</h1>
-            <p class="subtitle">dreamy portfolio</p>
+            <p class="subtitle">Portfolio</p>
             <button onclick="showPage('about-page')" class="start-btn">START DREAMING</button>
         </div>
+
+        <div class="hanging-moon">
+            <div class="moon-string"></div>
+            <div class="moon"></div>
+        </div>
+
+        <div class="shooting-stars">
+            <div class="shooting-star"></div>
+            <div class="shooting-star"></div>
+        </div>
+
     </div>
 
     <!-- About Me Page -->

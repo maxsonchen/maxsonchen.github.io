@@ -14,9 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function createStars() {
     const starsContainer = document.querySelector('.stars-container');
-    const numStars = 50;
+    const numRoundStars = 35;
+    const numDiamondStars = 15;
     
-    for (let i = 0; i < numStars; i++) {
+    // Create round stars
+    for (let i = 0; i < numRoundStars; i++) {
         const star = document.createElement('div');
         star.className = 'star';
 
@@ -30,6 +32,23 @@ function createStars() {
         star.style.animationDelay = Math.random() * 2 + 's';
         
         starsContainer.appendChild(star);
+    }
+    
+    // Create diamond stars
+    for (let i = 0; i < numDiamondStars; i++) {
+        const diamondStar = document.createElement('div');
+        diamondStar.className = 'diamond-star';
+
+        diamondStar.style.left = Math.random() * 100 + '%';
+        diamondStar.style.top = Math.random() * 100 + '%';
+
+        const size = Math.random() * 6 + 6; // 6-12px for diamonds
+        diamondStar.style.width = size + 'px';
+        diamondStar.style.height = size + 'px';
+
+        diamondStar.style.animationDelay = Math.random() * 3 + 's';
+        
+        starsContainer.appendChild(diamondStar);
     }
 }
 

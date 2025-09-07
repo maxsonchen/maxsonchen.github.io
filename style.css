@@ -1,3 +1,4 @@
+/* ===== GLOBAL RESET ===== */
 html {
     margin: 0 !important;
     padding: 0 !important;
@@ -10,41 +11,81 @@ body {
     border: none;
 }
 
+/* ===== PAGE SYSTEM ===== */
+.page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+.page.active {
+    display: block;
+    position: relative;
+}
+
+/* ===== LANDING PAGE ===== */
 #landing-page {
-    font-family: Raleway, sans-serif;
+    background: linear-gradient(180deg,
+        #0f0520 0%,
+        #1e1040 25%,
+        #2d1b69 45%,
+        #4c4b9d 65%,
+        #7c3aed 85%,
+        #a855f7 100%
+    );
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
     border: none;
     outline: none;
 }
 
+#landing-page.active {
+    display: flex;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 10;
+}
+
 .landing-content h1 {
-    font-family: 'Poppins', sans-serif;
+    position: relative;
+    bottom: 200px;
+    right: 300px;
+    font-family: 'Press Start 2P', sans-serif;
     font-weight: 1000;
 }
 
 #landing-page .subtitle {
-    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    bottom: 200px;
+    right: 300px;
+    font-family: 'Press Start 2P', sans-serif;
     font-weight: 1000;
 }
 
+/* Start Button */
 .start-btn {
     border: none;
     outline: none;
-    
     background: rgba(255, 255, 255, 0.2);
     color: white;
     padding: 20px 50px;
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 1000;
     border-radius: 50px;
     cursor: pointer;
-    
     backdrop-filter: blur(15px);
-    border: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    
-    font-family: 'Poppins', sans-serif;
-    font-weight: 1000;
-
+    font-family: 'Press Start 2P', sans-serif;
     transition: all 0.3s ease;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -60,20 +101,7 @@ body {
     transform: translateY(-1px) scale(1.02);
 }
 
-.page {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100%;
-}
-
-.page.active {
-    display: block;
-    position: relative;
-}
-
+/* ===== STARS ANIMATION ===== */
 .stars-container {
     position: absolute;
     top: 0;
@@ -102,7 +130,55 @@ body {
     }
 }
 
-.clouds-container {
+/* Diamond Stars */
+.diamond-star {
+    position: absolute;
+    width: 0;
+    height: 0;
+    animation: diamond-sparkle 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.diamond-star::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid white;
+    top: -8px;
+    left: -6px;
+}
+
+.diamond-star::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid white;
+    top: 0px;
+    left: -6px;
+}
+
+@keyframes diamond-sparkle {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.8);
+        filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.3);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+    }
+}
+
+/* ===== SHOOTING STARS ===== */
+/* Shooting stars container */
+.shooting-stars {
     position: absolute;
     top: 0;
     left: 0;
@@ -110,103 +186,224 @@ body {
     height: 100%;
     pointer-events: none;
     overflow: hidden;
+    z-index: 2;
 }
 
-.cloud {
-    background-color: #fff;
-    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0), hsla(0,0%,0%,.1));
-    border-radius: 1em;
-    box-shadow: inset 0 0 0 1px hsla(0,0%,100%,.5);
-    display: inline-block;
-    height: 1em;
+/* Individual shooting star */
+.shooting-star {
     position: absolute;
-    width: 3em;
-    -webkit-filter: drop-shadow(0 2px 3px hsla(0,0%,0%,.25));
-    animation: float-across 20s infinite linear;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.8);
+    animation: shoot 3s linear infinite;
 }
 
-.cloud::before,
-.cloud::after {
-    background-color: #fff;
+/* Shooting star trail effect */
+.shooting-star::before {
     content: '';
-    border-radius: 100%;
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+    transform: translateX(-35px) translateY(35px) rotateZ(45deg);
+    transform-origin: 85px -35px;
 }
 
-.cloud::after {
-    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0) 50%, hsla(0,0%,0%,.025));
-    height: 1em;
-    right: .4em;
-    top: -.5em;
-    width: 1em;
+/* Shooting animation */
+@keyframes shoot {
+    0% {
+        transform: translateX(-100px) translateY(-100px);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(100vw + 300px)) translateY(calc(100vh + 300px));
+        opacity: 0;
+    }
 }
 
-.cloud::before {
-    background-image: -webkit-linear-gradient(hsla(0,0%,0%,0) 50%, hsla(0,0%,0%,.075));
-    height: 1.6em;
-    left: .4em;
-    top: -.75em;
-    width: 1.6em;
-}
-
-
-.cloud1 {
-    font-size: 60px;
-    top: 20%;
-    left: -180px;
-    animation-duration: 25s;
+/* Multiple shooting stars with different timings */
+.shooting-star:nth-child(1) {
+    top: 10%;
+    left: -50px;
     animation-delay: 0s;
+    animation-duration: 3s;
 }
 
-
-.cloud2 {
-    font-size: 40px;
-    top: 60%;
-    left: -120px;
-    animation-duration: 30s;
-    animation-delay: 10s;
+.shooting-star:nth-child(2) {
+    top: 20%;
+    left: -50px;
+    animation-delay: 1.5s;
+    animation-duration: 2.5s;
 }
 
-
-.cloud3 {
-    font-size: 30px;
-    top: 40%;
-    left: -90px;
-    animation-duration: 35s;
-    animation-delay: 20s;
+.shooting-star:nth-child(3) {
+    top: 35%;
+    left: -50px;
+    animation-delay: 3s;
+    animation-duration: 3.5s;
 }
 
-@keyframes float-across {
-    0% { 
-        transform: translateX(0); 
-    }
-    100% { 
-        transform: translateX(calc(100vw + 120px)); 
-    }
+.shooting-star:nth-child(4) {
+    top: 50%;
+    left: -50px;
+    animation-delay: 4.5s;
+    animation-duration: 2.8s;
 }
 
+.shooting-star:nth-child(5) {
+    top: 70%;
+    left: -50px;
+    animation-delay: 6s;
+    animation-duration: 3.2s;
+}
 
-.landing-content {
+/* ===== FLOATING CLOUD (BOTTOM) ===== */
+.floating-cloud {
+    position: absolute;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: gentle-bob 8s ease-in-out infinite;
+}
+
+.cloud-layer {
     position: relative;
-    z-index: 10;
+    width: 600px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 100px;
+    filter: blur(1px);
 }
 
-
-#landing-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
-    display: none; 
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
+.cloud-layer::before {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    top: -80px;
+    left: 80px;
+    filter: blur(0.5px);
 }
 
-#landing-page.active {
-    display: flex;
+.cloud-layer::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    top: -60px;
+    right: 60px;
+    filter: blur(0.8px);
 }
 
-/* Other pages */
+.cloud-back {
+    position: absolute;
+    width: 500px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 80px;
+    top: 40px;
+    left: 50px;
+    filter: blur(2px);
+    z-index: -1;
+}
+
+.cloud-front {
+    position: absolute;
+    width: 350px;
+    height: 140px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 70px;
+    top: 30px;
+    left: 125px;
+    z-index: 2;
+    filter: blur(0.3px);
+}
+
+/* Additional cloud puffs for more natural look */
+.cloud-front::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    top: -40px;
+    left: 20px;
+    filter: blur(0.2px);
+}
+
+.cloud-front::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 50%;
+    top: -35px;
+    right: 30px;
+    filter: blur(0.4px);
+}
+
+@keyframes gentle-bob {
+    0%, 100% { 
+        transform: translateX(-50%) translateY(0); 
+    }
+    50% { 
+        transform: translateX(-50%) translateY(-15px); 
+    }
+}
+
+/* ===== HANGING MOON ===== */
+.hanging-moon {
+    position: absolute;
+    top: 0px;
+    right: 10%;
+    z-index: 5;
+}
+
+.moon-string {
+    width: 2px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 auto;
+    animation: sway 4s ease-in-out infinite;
+}
+
+.moon {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #e4e6ff, #e6ccff);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 20px rgba(109, 109, 109, 0.356),
+        inset -10px -10px 0 rgba(0, 0, 0, 0.1);
+    animation: sway 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
+    margin: 0 auto;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), inset -10px -10px 0 rgba(0, 0, 0, 0.1); }
+    100% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), inset -10px -10px 0 rgba(0, 0, 0, 0.1); }
+}
+
+/* ===== OTHER PAGES ===== */
 #main-portfolio, #about-page, #education-page, #projects-page {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
@@ -214,10 +411,10 @@ body {
 }
 
 #main-portfolio.active, #about-page.active, #education-page.active, #projects-page.active {
-    display: block; 
+    display: block;
 }
 
-/* Navigation */
+/* ===== NAVIGATION ===== */
 nav {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(15px);
