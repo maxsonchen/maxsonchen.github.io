@@ -6,12 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Maxson's Dreamy Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Landing Page -->
-    <div id="landing-page" class="page active">
+    <div id="landing-page" class="page active page-background">
         <div class="stars-container"></div>
         
         <div class="floating-cloud">
@@ -36,10 +37,25 @@
             <div class="shooting-star"></div>
         </div>
 
+        <div class="svg-cloud">
+            <svg viewBox="0 0 300 150">
+                <defs>
+                    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                        <stop offset="50%" style="stop-color:#c8b4ff;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#9678ff;stop-opacity:0.4" />
+                    </linearGradient>
+                </defs>
+                <path d="M50,100 Q20,80 40,60 Q60,40 100,50 Q140,30 180,50 Q220,40 240,60 Q260,80 230,100 Z" 
+                      fill="url(#cloudGradient)" 
+                      filter="blur(2px)"/>
+            </svg>
+        </div>
+
     </div>
 
     <!-- About Me Page -->
-    <div id="about-page" class="page">
+    <div id="about-page" class="page page-background">
         <div class="stars-container"></div>
         <nav>
             <div class="nav-content">
@@ -56,9 +72,17 @@
                 <h2 class="about">About Me</h2>
                 <img src="pfp.jpg" alt="Maxson's Profile Picture">
                 <div class="button-container">
-                    <button class="circular-btn">📧</button>
-                    <button class="circular-btn">💼</button>
-                    <button class="circular-btn">🔗</button>
+                    <a href="https://github.com/maxsonchen" target="_blank" class="circular-btn">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/in/maxsonchen" target="_blank" class="circular-btn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="mailto:maxamillionx11@gmail.com" class="circular-btn">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
                 </div>
                 <p class="about-hi">Hello!</p>
                 <p class="about">I'm Maxson, I'm a second year student at UNSW studying a bachelor of actuarial studies / computer science. I love solving solving problems and learning news things but I am also interested in cars, playing video games or playing sports.</p>
@@ -72,15 +96,20 @@
             </section>
 
             <section>
-                <h2 class="music">Music</h2>
-                <p class="music">I like to listen to hardstyle</p>
+                <h2 class="classes">Classes</h2>
+                <p class="classes">I have completed the following classes<br>
+                    - COMP1511<br>
+                    - COMP1521<br>
+                    - COMP1531<br>
+                    - COMP2521<br>
+                </p>
             </section>
         </main>
     </div>
 
 
     <!-- Projects Page -->
-    <div id="projects-page" class="page">
+    <div id="projects-page" class="page page-background">
         <div class="stars-container"></div>
         <nav>
             <div class="nav-content">
@@ -95,11 +124,15 @@
         <main>
             <section>
                 <h2>My Projects</h2>
-                <h3>Portfolio Website</h3>
-                <p>This very website you're browsing! Built with HTML, CSS, and JavaScript.</p>
-                
-                <h3>Coming Soon...</h3>
-                <p>More exciting projects are in development!</p>
+                <br>
+                <h3 class="website">Portfolio Website</h3>
+                <p class="website">This very website you're browsing! Built with HTML, CSS, and JavaScript.</p>
+                <br>
+                <h3 class="ml">Machine Learning</h3>
+                <p class="ml">I liked utilising machine learning models using python to build predictive models for financials and other projects</p>
+                <br>
+                <h3 class="app">Apps</h3>
+                <p class="app">I am currently trying to build a full stack app project</p>
             </section>
         </main>
     </div>

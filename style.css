@@ -1,54 +1,80 @@
 /* ===== GLOBAL RESET ===== */
-html {
-    margin: 0 !important;
-    padding: 0 !important;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0 !important;
-    padding: 0 !important;
-    outline: none;
-    border: none;
+    cursor: none;
 }
 
-/* ===== PAGE SYSTEM ===== */
+/* stardust trail */
+.custom-cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(200,150,255,0.3), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: screen;
+    transition: opacity 0.1s ease;
+}
+
+.stardust {
+    position: fixed;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 9998;
+    animation: stardust-fade 1.5s ease-out forwards;
+}
+
+@keyframes stardust-fade {
+    0% {
+        opacity: 1;
+        transform: scale(0.3) rotate(0deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.2) rotate(360deg);
+    }
+}
+
+/* pages */
 .page {
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
 }
 
 .page.active {
     display: block;
-    position: relative;
 }
 
-/* ===== LANDING PAGE ===== */
+/* landing page */
 #landing-page {
-    background: linear-gradient(180deg,
-        #0f0520 0%,
-        #1e1040 25%,
-        #2d1b69 45%,
-        #4c4b9d 65%,
-        #7c3aed 85%,
-        #a855f7 100%
-    );
     height: 100vh;
-    display: none;
+    max-height: 100vh;
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
     font-family: 'Pixelify Sans', sans-serif;
-    border: none;
-    outline: none;
 }
 
 #landing-page.active {
     display: flex;
+}
+
+body:has(#landing-page.active) {
+    overflow: hidden;
+    height: 100vh;
 }
 
 .landing-content {
@@ -70,18 +96,17 @@ body {
     right: 300px;
     font-family: 'Press Start 2P', sans-serif;
     font-weight: 1000;
+    font-size: 25px;
 }
 
 /* Start Button */
 .start-btn {
     position: relative;
-    border: none;
     bottom: 100px;
     right: 150px;
-    outline: none;
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 20px 20px;
+    padding: 20px;
     font-size: 1.3rem;
     font-weight: 1000;
     border-radius: 20px;
@@ -104,7 +129,7 @@ body {
     transform: translateY(-1px) scale(1.02);
 }
 
-/* ===== STARS ANIMATION ===== */
+/* Star Animation */
 .stars-container {
     position: absolute;
     top: 0;
@@ -179,8 +204,7 @@ body {
     }
 }
 
-/* ===== SHOOTING STARS ===== */
-/* Shooting stars container */
+/* Shooting Stars */
 .shooting-stars {
     position: absolute;
     top: 0;
@@ -267,7 +291,7 @@ body {
     animation-duration: 3.2s;
 }
 
-/* ===== FLOATING CLOUD (BOTTOM) ===== */
+/* Floating Cloud */
 .floating-cloud {
     position: absolute;
     bottom: -150px;
@@ -334,7 +358,6 @@ body {
     filter: blur(0.3px);
 }
 
-/* Additional cloud puffs for more natural look */
 .cloud-front::before {
     content: '';
     position: absolute;
@@ -368,7 +391,7 @@ body {
     }
 }
 
-/* ===== HANGING MOON ===== */
+/* Hanging Moon */
 .hanging-moon {
     position: absolute;
     top: 0px;
@@ -407,8 +430,44 @@ body {
     100% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), inset -10px -10px 0 rgba(0, 0, 0, 0.1); }
 }
 
-/* ===== OTHER PAGES ===== */
-#main-portfolio, #about-page, #projects-page {
+/* Cloud */
+.svg-cloud {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 200px;
+    height: 100px;
+    z-index: 4;
+    pointer-events: none;
+    animation: svg-cloud-float 12s ease-in-out infinite;
+}
+
+.svg-cloud svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes svg-cloud-float {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateX(30px) translateY(-10px);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateX(60px) translateY(-5px);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateX(30px) translateY(10px);
+        opacity: 0.9;
+    }
+}
+
+/* other stuff */
+.page-background {
     background: linear-gradient(180deg,
         #0f0520 0%,
         #1e1040 25%,
@@ -417,16 +476,19 @@ body {
         #7c3aed 85%,
         #a855f7 100%
     );
-    min-height: 100vh;
     background-attachment: fixed;
     background-size: 100% 100vh;
-    display: none;
     color: white;
     font-family: 'Press Start 2P', sans-serif;
     font-weight: 1000;
 }
 
-/* ===== ABOUT SECTION ==== */
+#about-page, #projects-page {
+    min-height: 1000px;
+    padding-bottom: 100px;
+}
+
+/* About Section */
 
 h2.about {
     position: absolute;
@@ -454,7 +516,7 @@ p.about {
     overflow-wrap: break-word;
 }
 
-/* ===== GAMES SECTION ==== */
+/* Game section */
 
 h2.games {
     position: absolute;
@@ -472,17 +534,17 @@ p.games {
     overflow-wrap: break-word;
 }
 
-/* ===== MUSIC SECTION ==== */
+/* Classes Section */
 
-h2.music {
+h2.classes {
     position: absolute;
-    top: 800px;
+    top: 750px;
     left: 200px;
 }
 
-p.music {
-    position: relative;
-    top: 700px;
+p.classes {
+    position: absolute;
+    top: 800px;
     left: 200px;
     max-width: 30%;
     line-height: 1.8;
@@ -490,15 +552,20 @@ p.music {
     overflow-wrap: break-word;
 }
 
-/* ==== PFP ==== */
-
+/* pfp */
 img {
     position: absolute;
-    top: 200px;     /* Top-right corner */
+    top: 200px;
     right: 100px;
+    border-radius: 50%;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* ==== CIRCULAR BUTTONS ==== */
+/* ohter buttons */
 
 .button-container {
     position: absolute;
@@ -509,6 +576,7 @@ img {
 }
 
 .circular-btn {
+    text-decoration: none !important;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -526,7 +594,7 @@ img {
 }
 
 .circular-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(42, 59, 155, 0.377);
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
@@ -539,7 +607,50 @@ img {
     display: block;
 }
 
-/* ===== NAVIGATION ===== */
+/* project Section */
+#projects-page h2 {
+    position: absolute;
+    left: 200px;
+    top: 120px;
+}
+
+h3.website {
+    position: absolute;
+    left: 200px;
+    top: 180px;
+}
+
+p.website {
+    position: absolute;
+    left: 200px;
+    top: 220px;
+}
+
+h3.ml {
+    position: absolute;
+    left: 200px;
+    top: 300px;
+}
+
+p.ml {
+    position: absolute;
+    left: 200px;
+    top: 350px;
+}
+
+h3.app {
+    position: absolute;
+    left: 200px;
+    top: 450px;
+}
+
+p.app {
+    position: absolute;
+    left: 200px;
+    top: 480px;
+}
+
+/* Navigation Bar */
 nav {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(15px);
@@ -590,13 +701,3 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-/* ===== CONTENT STYLES ===== */
-/* Profile image */
-img {
-    border-radius: 50%;
-    max-width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
